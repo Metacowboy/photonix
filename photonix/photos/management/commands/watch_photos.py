@@ -64,7 +64,8 @@ class Command(BaseCommand):
                     current_libraries = await get_libraries()
 
                     for path, id in current_libraries.items():
-                        if path not in watching_libraries:
+                        # Ingore hiden folders z.B .LP_Store
+                        if path not in watching_libraries and not ("." ) in os.path.basename(path)[0]:
                             for directory in get_directories_recursive(Path(path)):
                                 logger.info(f'Watching new path: {directory}')
                                 watch = inotify.add_watch(directory, Mask.MODIFY | Mask.CREATE | Mask.DELETE | Mask.CLOSE | Mask.MOVE)
