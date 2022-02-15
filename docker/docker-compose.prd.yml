@@ -36,6 +36,7 @@ services:
       REDIS_HOST: redis
       ALLOWED_HOSTS: '*'
     volumes:
+      - ../data:/data
       - ../data/photos:/data/photos
       - ../data/photosmeta:/data/photosmeta
       - ../../../Pictures/_PhotonixServer_:/data/pictures

@@ -77,6 +77,12 @@ If you want to access the Bash or Python shells for development, you can use the
 
     make shell
 
+#Create additional Library for User 
+python manage.py create_library USERNAME "LYBRARY_NAME" --path "/data/sometest"
+
+- Checks if path is mounted - create Folder if needet
+- in docker-composer.yml we Mounted - ../data:/data to create User image folders 
+
 ## Testing
 
 PyTest is used as a test runner and for creating fixtures. The easiest way to run the tests is within the Docker container like this:

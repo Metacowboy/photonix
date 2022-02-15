@@ -39,10 +39,13 @@ class Command(BaseCommand):
         print(f'Library "{library_name}" with path "{path}" created successfully for user "{username}"')
 
     def is_path_dir(self, path):
+        if not os.path.exists(path) and os.path.ismount(os.path.dirname(path)):
+            os.makedirs(path)
+
         if os.path.isdir(path):
             return path
         else:
-            raise argparse.ArgumentTypeError(f"{path} is not a valid folder")
+            raise argparse.ArgumentTypeError(f"{path} is not a valid folder ")
 
     def add_arguments(self, parser):
         # Positional arguments
