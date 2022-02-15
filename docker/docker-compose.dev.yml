@@ -54,7 +54,11 @@ services:
       - ../ui/yarn.lock:/srv/ui/yarn.lock
       - ../ui/config:/srv/ui/config
       - ../ui/scripts:/srv/ui/scripts
+
       - ../data/photos:/data/photos
+      - ../data/photosmeta:/data/photosmeta
+      - ../../../Pictures/_PhotonixServer_:/data/pictures
+
       - ../data/raw-photos-processed:/data/raw-photos-processed
       - ../data/cache:/data/cache
       - ../data/models:/data/models

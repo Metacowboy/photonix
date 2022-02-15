@@ -37,6 +37,9 @@ services:
       ALLOWED_HOSTS: '*'
     volumes:
       - ../data/photos:/data/photos
+      - ../data/photosmeta:/data/photosmeta
+      - ../../../Pictures/_PhotonixServer_:/data/pictures
+
       - ../data/raw-photos-processed:/data/raw-photos-processed
       - ../data/cache:/data/cache
       - ../data/models:/data/models
