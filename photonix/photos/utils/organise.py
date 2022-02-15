@@ -85,9 +85,9 @@ def determine_same_file(origpath, destpath, fhc=None):
     # TODO: Convert raw photos into temp jpgs to do proper comparison
     return False
 
-# Blacklist more files PSD svg JS CSS
+# Blacklist more files PSD svg JS CSS. .lpmd
 def blacklisted_type(file):
-    if file[-4:].lower() == '.mov' or file[-4:].lower() == '.mp4' or file[-4:].lower() == '.mkv' or file[-4:].lower() == '.css' or file[-3:].lower() == '.js' or file[-4:].lower() == '.psd' or file[-4:].lower() == '.svg':
+    if file[-4:].lower() == '.mov' or file[-4:].lower() == '.mp4' or file[-4:].lower() == '.mkv' or file[-4:].lower() == '.css' or file[-3:].lower() == '.js' or file[-4:].lower() == '.psd' or file[-4:].lower() == '.svg' or file[-5:].lower() == '.lpmd':
         return True
     if file == '.DS_Store':
         return True
