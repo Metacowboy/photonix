@@ -1,4 +1,6 @@
 import asyncio
+import os, stat
+
 from pathlib import Path
 from time import sleep
 
@@ -23,6 +25,14 @@ class Command(BaseCommand):
         watching_libraries = {}
 
         with Inotify() as inotify:
+            # Check if folder File is hiden OSX
+            def is_hidden_folder(path):
+                basename = os.path.basename(os.path.normpath(path))
+                if basename[0] == '.' and os.path.isdir(path):
+                            #print("ACHTUNG is 'HIDEN FoLDER' ", path)
+                            return True
+                return False
+                
 
             @sync_to_async
             def get_libraries():
@@ -55,17 +65,26 @@ class Command(BaseCommand):
                 if path.is_dir():
                     yield path
                     for child in path.iterdir():
+                        #print(os.path.basename(os.path.normpath(child)))
+                        if is_hidden_folder(child):
+                            continue
+
                         yield from get_directories_recursive(child)
 
             async def check_libraries():
                 while True:
                     await asyncio.sleep(1)
+                    
 
                     current_libraries = await get_libraries()
 
                     for path, id in current_libraries.items():
-                        # Ingore hiden folders z.B .LP_Store
-                        if path not in watching_libraries and not ("." ) in os.path.basename(path)[0]:
+                        
+                        # Ingore hiden folders z.B .LP_Store #METADEF
+                        if is_hidden_folder(path):
+                            continue
+
+                        if path not in watching_libraries:
                             for directory in get_directories_recursive(Path(path)):
                                 logger.info(f'Watching new path: {directory}')
                                 watch = inotify.add_watch(directory, Mask.MODIFY | Mask.CREATE | Mask.DELETE | Mask.CLOSE | Mask.MOVE)
