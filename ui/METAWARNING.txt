@@ -1,0 +1,175 @@
+METAWARNING 
+
+## ERRORS
+##WARNING
+## VIOLATIONS##
+[Violation] Added non-passive event listener to a scroll-blocking <some> event. Consider marking event handler as 'passive' to make the page more responsive. See <URL>
+19[Violation] 'touchend' handler took <N>ms
+17[Violation] 'popstate' handler took <N>ms
+9[Violation] 'setTimeout' handler took <N>ms
+
+
+--- ERRORS 2---
+0.chunk.js:119204 Warning: Legacy context API has been detected within a strict-mode tree.
+
+The old API will be supported in all 16.x releases, but applications using it should migrate to the new version.
+
+Please update the following components: Modal
+
+Learn more about this warning here: https://fb.me/react-legacy-context
+    in Modal (created by Context.Consumer)
+    in Route (created by ModalRoute)
+    in ModalRoute (created by Context.Consumer)
+    in withRouter(ModalRoute) (at App.js:62)
+    in Switch (at App.js:53)
+    in App (at AppContainer.js:84)
+    in AppContainer (at src/index.js:9)
+    in div (at Init.js:78)
+    in ColorModeProvider (at Init.js:77)
+    in ThemeProvider (created by ThemeProvider)
+    in ThemeProvider (at Init.js:76)
+    in Router (at Init.js:75)
+    in ApolloProvider (at Init.js:74)
+    in StrictMode (at Init.js:73)
+    in Provider (at Init.js:72)
+    in Init (at src/index.js:8)
+console.<computed> @ 0.chunk.js:119204
+printWarning @ 0.chunk.js:92901
+error @ 0.chunk.js:92873
+(anonymous) @ 0.chunk.js:104285
+push../node_modules/react-dom/cjs/react-dom.development.js.ReactStrictModeWarnings.flushLegacyContextWarning @ 0.chunk.js:104272
+flushRenderPhaseStrictModeWarningsInDEV @ 0.chunk.js:115773
+commitRootImpl @ 0.chunk.js:115070
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+commitRoot @ 0.chunk.js:115055
+finishSyncRender @ 0.chunk.js:114472
+performSyncWorkOnRoot @ 0.chunk.js:114458
+(anonymous) @ 0.chunk.js:103942
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+flushSyncCallbackQueueImpl @ 0.chunk.js:103937
+flushSyncCallbackQueue @ 0.chunk.js:103925
+discreteUpdates$1 @ 0.chunk.js:114561
+discreteUpdates @ 0.chunk.js:93623
+dispatchDiscreteEvent @ 0.chunk.js:97022
+
+
+--- WARNINGS 4 ----
+
+## Warning: componentWillReceiveProps has been renamed
+# SOLUTION 
+https://stackoverflow.com/questions/58924617/componentwillreceiveprops-has-been-renamed
+
+0.chunk.js:92901 Warning: componentWillReceiveProps has been renamed, and is not recommended for use. See https://fb.me/react-unsafe-component-lifecycles for details.
+
+* Move data fetching code or side effects to componentDidUpdate.
+* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://fb.me/react-derived-state
+* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.
+
+Please update the following components: ModalContainer
+printWarning @ 0.chunk.js:92901
+warn @ 0.chunk.js:92863
+push../node_modules/react-dom/cjs/react-dom.development.js.ReactStrictModeWarnings.flushPendingUnsafeLifecycleWarnings @ 0.chunk.js:104232
+flushRenderPhaseStrictModeWarningsInDEV @ 0.chunk.js:115775
+commitRootImpl @ 0.chunk.js:115070
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+commitRoot @ 0.chunk.js:115055
+finishSyncRender @ 0.chunk.js:114472
+performSyncWorkOnRoot @ 0.chunk.js:114458
+scheduleUpdateOnFiber @ 0.chunk.js:113854
+updateContainer @ 0.chunk.js:117003
+(anonymous) @ 0.chunk.js:117386
+unbatchedUpdates @ 0.chunk.js:114572
+legacyRenderSubtreeIntoContainer @ 0.chunk.js:117385
+render @ 0.chunk.js:117468
+./src/index.js @ main.chunk.js:13732
+__webpack_require__ @ bundle.js:786
+fn @ bundle.js:151
+1 @ main.chunk.js:14689
+__webpack_require__ @ bundle.js:786
+checkDeferredModules @ bundle.js:46
+webpackJsonpCallback @ bundle.js:33
+(anonymous) @ main.chunk.js:1
+0.chunk.js:92901 Warning: componentWillMount has been renamed, and is not recommended for use. See https://fb.me/react-unsafe-component-lifecycles for details.
+
+* Move code with side effects to componentDidMount, and set initial state in the constructor.
+* Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.
+
+Please update the following components: Modal
+printWarning @ 0.chunk.js:92901
+warn @ 0.chunk.js:92863
+push../node_modules/react-dom/cjs/react-dom.development.js.ReactStrictModeWarnings.flushPendingUnsafeLifecycleWarnings @ 0.chunk.js:104226
+flushRenderPhaseStrictModeWarningsInDEV @ 0.chunk.js:115775
+commitRootImpl @ 0.chunk.js:115070
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+commitRoot @ 0.chunk.js:115055
+finishSyncRender @ 0.chunk.js:114472
+performSyncWorkOnRoot @ 0.chunk.js:114458
+(anonymous) @ 0.chunk.js:103942
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+flushSyncCallbackQueueImpl @ 0.chunk.js:103937
+flushSyncCallbackQueue @ 0.chunk.js:103925
+discreteUpdates$1 @ 0.chunk.js:114561
+discreteUpdates @ 0.chunk.js:93623
+dispatchDiscreteEvent @ 0.chunk.js:97022
+0.chunk.js:92901 Warning: componentWillReceiveProps has been renamed, and is not recommended for use. See https://fb.me/react-unsafe-component-lifecycles for details.
+
+* Move data fetching code or side effects to componentDidUpdate.
+* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://fb.me/react-derived-state
+* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.
+
+Please update the following components: Modal
+printWarning @ 0.chunk.js:92901
+warn @ 0.chunk.js:92863
+push../node_modules/react-dom/cjs/react-dom.development.js.ReactStrictModeWarnings.flushPendingUnsafeLifecycleWarnings @ 0.chunk.js:104232
+flushRenderPhaseStrictModeWarningsInDEV @ 0.chunk.js:115775
+commitRootImpl @ 0.chunk.js:115070
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+commitRoot @ 0.chunk.js:115055
+finishSyncRender @ 0.chunk.js:114472
+performSyncWorkOnRoot @ 0.chunk.js:114458
+(anonymous) @ 0.chunk.js:103942
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+flushSyncCallbackQueueImpl @ 0.chunk.js:103937
+flushSyncCallbackQueue @ 0.chunk.js:103925
+discreteUpdates$1 @ 0.chunk.js:114561
+discreteUpdates @ 0.chunk.js:93623
+dispatchDiscreteEvent @ 0.chunk.js:97022
+0.chunk.js:6646 The updateQuery callback for fetchMore is deprecated, and will be removed
+in the next major version of Apollo Client.
+
+Please convert updateQuery functions to field policies with appropriate
+read and merge functions, or use/adapt a helper function (such as
+concatPagination, offsetLimitPagination, or relayStylePagination) from
+@apollo/client/utilities.
+
+The field policy system handles pagination more effectively than a
+hand-written updateQuery function, and you only need to define the policy
+once, rather than every time you call fetchMore.
+(anonymous) @ 0.chunk.js:6646
+(anonymous) @ 0.chunk.js:3358
+Promise.then (async)
+ObservableQuery.fetchMore @ 0.chunk.js:3352
+QueryData._this.obsFetchMore @ 0.chunk.js:7626
+refetchPhotos @ main.chunk.js:12535
+loadItems @ main.chunk.js:4622
+(anonymous) @ main.chunk.js:4626
+commitHookEffectListMount @ 0.chunk.js:112419
+commitPassiveHookEffects @ 0.chunk.js:112456
+callCallback @ 0.chunk.js:93001
+invokeGuardedCallbackDev @ 0.chunk.js:93050
+invokeGuardedCallback @ 0.chunk.js:93103
+flushPassiveEffectsImpl @ 0.chunk.js:115520
+unstable_runWithPriority @ 0.chunk.js:151886
+runWithPriority$1 @ 0.chunk.js:103888
+flushPassiveEffects @ 0.chunk.js:115488
+(anonymous) @ 0.chunk.js:115367
+workLoop @ 0.chunk.js:151830
+flushWork @ 0.chunk.js:151786
+performWorkUntilDeadline @ 0.chunk.js:151390
