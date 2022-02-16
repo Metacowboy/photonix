@@ -46,7 +46,7 @@ export class Handle extends Component {
             position: 'absolute',
             marginLeft: '-6px',
             marginTop: '-6px',
-            zIndex: 2,
+            zIndex: 1,
             width: 20,
             height: 20,
             cursor: 'col-resize',

@@ -1,0 +1,5 @@
+MetaNote UI APP
+
+-Select & Scroll react on the same Div -Error
+-If Selct get aktive no way to exit SElect mode on Mobile 
+ Desctop KEY ESC exit Select 
