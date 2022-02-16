@@ -62,8 +62,8 @@ export const useComponentVisible = (initialIsVisible, type) => {
     }
   }
   useEffect(() => {
-    document.addEventListener('keydown', handleHideDropdown, false)
-    document.addEventListener('click', handleClickOutside, false)
+      document.addEventListener('keydown', handleHideDropdown, false)
+      document.addEventListener('click', handleClickOutside, false)
     return () => {
       document.removeEventListener('keydown', handleHideDropdown, true)
       document.removeEventListener('click', handleClickOutside, true)

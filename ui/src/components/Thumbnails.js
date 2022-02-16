@@ -189,10 +189,14 @@ const Thumbnails = ({
       },
       onStart: () => console.log("Press started"),
       onFinish: () => console.log("Long press finished"),
-      onMove: () => console.log("Detected mouse or touch movement"),
-      threshold: 500,
+      onMove: () => {
+                    setSelected([])
+                    console.log("Detected mouse or touch movement ")
+                    },
+
+      threshold: 900,
       captureEvent: true,
-      cancelOnMovement: false,
+      cancelOnMovement: true,
       detect: LongPressDetectEvents.BOTH,
     }
   )
@@ -236,6 +240,7 @@ const Thumbnails = ({
 
   const onMouseDown = ctrlKeyPressed
     ? (e) => {
+
         const id = getNode(e.target).getAttribute('data-id')
         addRemoveItem(id)
       }
