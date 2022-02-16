@@ -11833,6 +11833,11 @@ pascalcase@^0.1.1:
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
+passive-events-support@^1.0.33:
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/passive-events-support/-/passive-events-support-1.0.33.tgz#aa8f1d56be9a81bc558a7168c82616c15adf089e"
+  integrity sha512-ooFBZ6B1RpwAMaFiLT+gU156qZkfUAZcK0ivd0ylptKr9KdhINHR3CLHewVTG1+HfqUdH0SPSq0mbaVReGZoaw==
+
 path-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.1.tgz#e6c4ddd7ed3aa27c68a20cc4e50e1a4ee83bbc4a"

@@ -1,5 +1,14 @@
 METAWARNING 
 
+
+CONSOLE ERRORS
+WARN unable to find package.json for passive-events-support
+photonix    | WARN unable to find package.json for use-long-press
+
+
+
+
+######## WEB ERRORS #####
 ## ERRORS
 ##WARNING
 ## VIOLATIONS##

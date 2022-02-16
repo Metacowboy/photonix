@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useMutation } from '@apollo/client'
 import { useLongPress, LongPressDetectEvents } from 'use-long-press'
+
+
+
 import styled from '@emotion/styled'
 import { useHistory } from 'react-router-dom'
 
@@ -13,6 +16,8 @@ import { ReactComponent as AlbumIcon } from '../static/images/album_outlined.svg
 import { ReactComponent as ArrowBackIcon } from '../static/images/arrow_back.svg'
 import { ReactComponent as DeleteIcon } from '../static/images/delete_outlined.svg'
 import { ReactComponent as TagIcon } from '../static/images/tag_outlined.svg'
+
+
 
 const Container = styled('ul')`
   margin: 0;
@@ -169,7 +174,8 @@ const Thumbnails = ({
     index > -1 ? ids.splice(index, 1) : ids.push(id)
     setSelected(ids)
   }
-
+  
+  /* METADEBUG LONG PRESS SELECT MULTI */
   const bind = useLongPress(
     (e) => {
       const id = getNode(e.target).getAttribute('data-id')
@@ -179,7 +185,11 @@ const Thumbnails = ({
       onCancel: (e) => {
         const id = getNode(e.target).getAttribute('data-id')
         selected.length > 0 ? addRemoveItem(id) : history.push(`/photo/${id}`)
+        console.log("Press cancelled")
       },
+      onStart: () => console.log("Press started"),
+      onFinish: () => console.log("Long press finished"),
+      onMove: () => console.log("Detected mouse or touch movement"),
       threshold: 500,
       captureEvent: true,
       cancelOnMovement: false,

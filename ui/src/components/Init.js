@@ -1,6 +1,11 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+
+/* DEBUG META EVENTS passive Events
+import { passiveSupport } from 'passive-events-support/src/utils'
+passiveSupport({ debug: true })
+*/
 import {
   ApolloClient,
   ApolloLink,
