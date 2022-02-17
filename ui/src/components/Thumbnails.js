@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useMutation } from '@apollo/client'
 import { useLongPress, LongPressDetectEvents } from 'use-long-press'
-
-
+import { useSwipeable } from 'react-swipeable';
 
 import styled from '@emotion/styled'
 import { useHistory } from 'react-router-dom'
@@ -97,6 +96,12 @@ const Thumbnails = ({
   const [removePhotosFromAlbum] = useMutation(REMOVE_PHOTOS_FROM_ALBUM)
   const [setPhotosDeleted] = useMutation(SET_PHOTOS_DELETED)
   const params = new URLSearchParams(window.location.search)
+  const [IsSwiping, setIsSwiping] = useState(false)
+
+  const [IsMoving, setIsMoving] = useState(false)
+  const [IsPress, setIsPress] = useState(false)
+
+ 
 
   const removeFromAlbum = (photoIds) => {
     removePhotosFromAlbum({
@@ -175,7 +180,15 @@ const Thumbnails = ({
     setSelected(ids)
   }
   
-  /* METADEBUG LONG PRESS SELECT MULTI */
+  
+
+  /* METADEBUG use-long-press 
+  ref: https://github.com/minwork/use-long-press
+  Sandbox: https://codesandbox.io/s/uselongpress-gnej6?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.tsx
+  - LONG PRESS SELECT MULTI 
+  - 2. Long Press on Selected deaktivate MULTI mode
+  - Allow fast select multi Sets with COntrol
+  */
   const bind = useLongPress(
     (e) => {
       const id = getNode(e.target).getAttribute('data-id')
@@ -185,23 +198,64 @@ const Thumbnails = ({
       onCancel: (e) => {
         const id = getNode(e.target).getAttribute('data-id')
         selected.length > 0 ? addRemoveItem(id) : history.push(`/photo/${id}`)
-        console.log("Press cancelled")
+        //console.log(id)
+        //console.log("ID got - Press cancelled")
       },
-      onStart: () => console.log("Press started"),
-      onFinish: () => console.log("Long press finished"),
-      onMove: () => {
-                    setSelected([])
-                    console.log("Detected mouse or touch movement ")
+      onStart: (e) => {
+                       console.log("Press started")
+                       setIsPress(true)
+                       
+                      },
+      onFinish: (e) => {
+                       console.log("Long press finished")
+                       setIsPress(false)
+                      },
+      onMove: (e) => {
+                     setIsMoving(true)
+                    //setSelected([])
+                    //console.log("Detected mouse or touch movement ")
                     },
 
-      threshold: 900,
+      threshold: 700,
       captureEvent: true,
       cancelOnMovement: true,
       detect: LongPressDetectEvents.BOTH,
     }
   )
 
-  useEffect(() => {
+
+
+  /* Swipe TEST 
+    ref: https://github.com/FormidableLabs/react-swipeable
+  */
+  const swipe = useSwipeable({
+    onSwipeStart: (e) => {
+      setIsSwiping(true)
+      console.log("swiping", e)
+      
+    },
+    onSwiped: (e) => {
+      setTimeout(setIsSwiping(false), 5000)
+      console.log("swiped", e)
+    },
+    delta: 10,                            // min distance(px) before a swipe starts. *See Notes* 
+    preventDefaultTouchmoveEvent: true,   // call e.preventDefault *See Details* 
+    trackTouch: true,                     // track touch input
+    trackMouse: false,                    // track mouse input
+    rotationAngle: 0,                     // set a rotation angle
+    
+  });
+
+ /* 'Experiments */ 
+ useEffect((e) =>{
+  if (IsMoving && IsPress) {
+         console.log("PREVENT DEFAULT")
+        document.removeEventListener("touchend", bind());
+      }
+
+ }) 
+    
+ useEffect(() => {
     if (mode === 'ALBUMS') setSelected([])
   }, [mode])
 
@@ -238,13 +292,18 @@ const Thumbnails = ({
     }
   }, [])
 
+  /* HANDELS THE CLICK */
   const onMouseDown = ctrlKeyPressed
     ? (e) => {
-
+        console.log("Mouse DOWN")
+        setIsSwiping(false)
         const id = getNode(e.target).getAttribute('data-id')
         addRemoveItem(id)
       }
-    : bind.onMouseDown
+    : bind.onMouseDown 
+  
+  
+
 
   return (
     <>
@@ -270,7 +329,7 @@ const Thumbnails = ({
                     <SectionHeading>{section.title}</SectionHeading>
                   ) : null}
                 </div>
-                <div className="thumbnails">
+                <div className="thumbnails" {...swipe}>
                   {section.segments.map((segment) =>
                     segment.photos.map((photo) => {
                       return mode === 'ALBUMS' ? (

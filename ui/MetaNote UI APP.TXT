@@ -1,5 +1,19 @@
 MetaNote UI APP
+#LEGEND#
+CNTR Key HOLD -shows all Select Boxes for MultiSelect with Click
+ESC key  - Remove all Selected 
 
--Select & Scroll react on the same Div -Error
--If Selct get aktive no way to exit SElect mode on Mobile 
+
+#MOBILE TOUCH BUGS
+-Select reacts on  Scroll on Thumbnails.js
+
+-If Selct get aktive no way to exit Select mode on Mobile 
  Desctop KEY ESC exit Select 
+
+
+
+
+#UI DEF
+ ## Count SElection with X to deselect all 
+ X. 2 selected
+ Position in Search bar 
