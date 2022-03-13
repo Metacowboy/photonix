@@ -250,7 +250,7 @@ const Thumbnails = ({
  useEffect((e) =>{
   if (IsMoving && IsPress) {
          console.log("PREVENT DEFAULT")
-        document.removeEventListener("touchend", bind());
+         //document.removeEventListener("touchend", bind());
       }
 
  }) 
